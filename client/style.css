@@ -1,0 +1,169 @@
+/* --- Global Reset --- */
+* {
+    box-sizing: border-box;
+    user-select: none; /* Prevents text selection while drawing */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Critical: Prevents scrollbars when drawing near edges */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f0f0; /* Fallback color */
+}
+
+/* --- Canvas Layer --- */
+canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Sits behind the toolbar */
+    cursor: crosshair; /* Changes mouse to crosshair for precision */
+    background-color: #ffffff;
+}
+
+/* --- Floating Toolbar --- */
+#toolbar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10; /* Sits above the canvas */
+    
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px); /* subtle glass effect */
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    
+    min-width: 200px;
+    transition: opacity 0.2s;
+}
+
+/* --- Tool Groups (Rows inside toolbar) --- */
+.tool-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.tool-group:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* --- Buttons --- */
+button {
+    flex: 1; /* Buttons stretch to fill space */
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #f5f5f5;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* --- Active State (Selected Tool) --- */
+button.active {
+    background-color: #007AFF; /* iOS Blue */
+    color: white;
+    border-color: #007AFF;
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+}
+
+/* --- Danger Button (Clear All) --- */
+button.danger {
+    color: #FF3B30;
+    border-color: #ffcccc;
+    background-color: #fff5f5;
+}
+
+button.danger:hover {
+    background-color: #FF3B30;
+    color: white;
+    border-color: #FF3B30;
+}
+
+/* --- Inputs --- */
+input[type="color"] {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%; /* Circle color picker */
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    overflow: hidden;
+}
+
+/* Customizing the color swatch wrapper */
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0; 
+}
+input[type="color"]::-webkit-color-swatch {
+    border: 2px solid #ddd;
+    border-radius: 50%;
+}
+
+input[type="range"] {
+    flex: 1;
+    cursor: pointer;
+}
+
+/* --- Status Text --- */
+#status {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+#userCount {
+    color: #007AFF;
+    font-weight: bold;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 600px) {
+    #toolbar {
+        top: auto;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        flex-direction: row; 
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .tool-group {
+        border-bottom: none;
+        border-right: 1px solid #eee;
+        padding-bottom: 0;
+        padding-right: 12px;
+    }
+    
+    .tool-group:last-child {
+        border-right: none;
+    }
+}
