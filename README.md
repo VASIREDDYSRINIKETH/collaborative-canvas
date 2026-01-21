@@ -1,14 +1,51 @@
-# 🎨 Real-Time Collaborative Canvas
+# 🎨 Real-Time Collaborative Drawing Canvas
 
-Welcome to the **Collaborative Canvas**! This is a real-time whiteboard application where multiple users can draw, erase, and brainstorm together instantly.
+A real-time, multi-user collaborative drawing application built using **HTML5 Canvas**, **Node.js**, and **Socket.io**.  
+Multiple users can draw simultaneously on a shared canvas with live synchronization, undo/redo, and conflict-safe state management.
 
-It’s built to be fast, responsive, and handles the tricky parts of collaboration—like making sure my "Undo" button doesn't erase *your* drawing.
+---
 
-## 🚀 Quick Start
+## 🚀 Live Demo
 
-Want to see it in action? Follow these steps:
+🔗 **Application URL:**  
+https://collaborative-canvas-on22.onrender.com
 
-**1. Install Dependencies**
-We use `express` for the server and `socket.io` for the real-time magic.
+---
+
+## 🎥 Demo Video
+
+📽️ **Watch Demo:**  
+https://drive.google.com/file/d/1HGQAJRpRWGFFu1fIHia3bi9Ckdt-4VVt/view?usp=sharing
+
+> The video demonstrates real-time drawing across multiple tabs, undo/redo synchronization, and clear-all behavior.
+
+---
+
+## ✨ Features
+
+- Real-time collaborative drawing
+- Brush & eraser tools
+- Color and stroke size selection
+- Server-authoritative undo / redo
+- Clear canvas (global)
+- DPI-safe and resize-safe canvas rendering
+- Deterministic redraw using stroke replay
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** HTML5 Canvas, Vanilla JavaScript
+- **Backend:** Node.js, Express
+- **Real-Time:** Socket.io (WebSockets)
+- **Deployment:** Render
+
+---
+
+## ▶️ Run Locally
+
 ```bash
+git clone https://github.com/YOUR-USERNAME/collaborative-canvas.git
+cd collaborative-canvas
 npm install
+npm start
